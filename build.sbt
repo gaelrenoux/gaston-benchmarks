@@ -73,3 +73,5 @@ Test / testOptions += Tests.Argument("-oD") // show test duration
 
 /* Stays inside the sbt console when we press "ctrl-c" in tests" */
 Global / cancelable := true
+
+enablePlugins(JmhPlugin)
