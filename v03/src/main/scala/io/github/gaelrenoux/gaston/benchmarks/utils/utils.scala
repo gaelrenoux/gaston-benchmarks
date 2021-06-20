@@ -1,7 +1,6 @@
 package io.github.gaelrenoux.gaston.benchmarks
 
-import scalaz._
-
+import scalaz.{NonEmptyList, \/}
 
 package object utils {
 

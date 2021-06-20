@@ -5,14 +5,13 @@ import fr.renoux.gaston.engine._
 import fr.renoux.gaston.input._
 import fr.renoux.gaston.model.Problem
 import fr.renoux.gaston.util.Context
-import io.github.gaelrenoux.gaston.benchmarks.utils._
 
 
 // scalastyle:off magic.number
 
 object MainHarness {
 
-  private implicit val udoConProblem: Problem = problemFromClassPath("udocon2017/uc17-completed.conf").force
+  private implicit val udoConProblem: Problem = problemFromClassPath("udocon2017/uc17-completed.conf").toOption.get
   private implicit val context: Context = Context.Default
 
   /** Runs the engine with some values */

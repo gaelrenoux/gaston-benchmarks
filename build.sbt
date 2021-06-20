@@ -78,8 +78,7 @@ enablePlugins(JmhPlugin)
 
 
 lazy val util = (project in file("util")).settings(
-  name := "gaston-benchmark-utils",
-  libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.3.3"
+  name := "gaston-benchmark-utils"
 )
 
 lazy val v03 = (project in file("v03")).settings(
