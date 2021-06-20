@@ -1,12 +1,13 @@
-organization := "io.github.gaelrenoux"
-name := "gaston-benchmarks"
-version := "0.1.0"
+ThisBuild / organization := "io.github.gaelrenoux"
+ThisBuild / version := "0.1.0"
+ThisBuild / scalaVersion := "2.13.6"
 
-scalaVersion := "2.13.6"
+name := "gaston-benchmarks"
 
 lazy val `gaston-benchmarks` = (project in file("."))
+  .aggregate(v03, v04)
 
-scalacOptions ++= Seq(
+ThisBuild / scalacOptions ++= Seq(
 
   "-language:implicitConversions",
   "-language:higherKinds",
@@ -61,17 +62,32 @@ scalacOptions ++= Seq(
   "-Xlint:deprecation" // Enable linted deprecations.
 )
 
-libraryDependencies ++= Seq(
-  "gael.renoux" %% "gaston" % "0.3.0",
+ThisBuild / libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.8" % "test"
 )
 
-Test / fork := true
-Test / testForkedParallel := true // run tests in parallel on the forked JVM
-Test / testOptions += Tests.Argument("-oD") // show test duration
-Test / testOptions += Tests.Argument("-oD") // show test duration
+ThisBuild / Test / fork := true
+ThisBuild / Test / testForkedParallel := true // run tests in parallel on the forked JVM
+ThisBuild / Test / testOptions += Tests.Argument("-oD") // show test duration
+ThisBuild / Test / testOptions += Tests.Argument("-oD") // show test duration
 
 /* Stays inside the sbt console when we press "ctrl-c" in tests" */
 Global / cancelable := true
 
 enablePlugins(JmhPlugin)
+
+
+lazy val util = (project in file("util")).settings(
+  name := "gaston-benchmark-utils",
+  libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.3.3"
+)
+
+lazy val v03 = (project in file("v03")).settings(
+  name := "gaston-benchmark-v03",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.3.0"
+).dependsOn(util)
+
+lazy val v04 = (project in file("v04")).settings(
+  name := "gaston-benchmark-v04",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.4.0"
+).dependsOn(util)
