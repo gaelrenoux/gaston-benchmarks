@@ -11,8 +11,8 @@ import fr.renoux.gaston.util.Context
 
 object MainHarness {
 
-  private implicit val udoConProblem: Problem = problemFromClassPath("udocon2017/uc17-completed.conf").toOption.get
-  private implicit val context: Context = Context.Default
+  implicit val udoConProblem: Problem = problemFromClassPath("udocon2017/uc17-completed.conf").toOption.get
+  implicit val context: Context = Context.Default
 
   /** Runs the engine with some values */
   def run(iterations: Long = 1, seed: Long = 0L)(implicit improver: Improver = new GreedySlotImprover): Unit = {

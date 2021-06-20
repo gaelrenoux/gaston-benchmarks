@@ -30,7 +30,7 @@ class MainBenchmark {
 
   @Benchmark
   def run(): Unit = {
-    MainHarness.run(10)
+    MainHarness.run(1000)
   }
 
 }

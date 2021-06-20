@@ -1,6 +1,7 @@
 package io.github.gaelrenoux.gaston.benchmarks
 
 
+import fr.renoux.gaston.engine.{Improver, TabuSearchSlotImprover}
 import org.openjdk.jmh.annotations._
 
 import java.util.concurrent.TimeUnit
@@ -30,7 +31,16 @@ class MainBenchmark {
 
   @Benchmark
   def run(): Unit = {
-    MainHarness.run(10)
+    MainHarness.run(1000)
   }
+
+  @Benchmark
+  def runTabu(): Unit = {
+    import MainHarness._
+    implicit val improver: Improver = new TabuSearchSlotImprover()
+    MainHarness.run(1000)
+  }
+
+
 
 }
