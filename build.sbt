@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "2.13.6"
 name := "gaston-benchmarks"
 
 lazy val `gaston-benchmarks` = (project in file("."))
-  .aggregate(v03, v04)
+  .aggregate(v03, v04, v05)
 
 ThisBuild / scalacOptions ++= Seq(
 
@@ -89,4 +89,9 @@ lazy val v03 = (project in file("v03")).settings(
 lazy val v04 = (project in file("v04")).settings(
   name := "gaston-benchmark-v04",
   libraryDependencies += "gael.renoux" %% "gaston" % "0.4.0"
+).dependsOn(util)
+
+lazy val v05 = (project in file("v05")).settings(
+  name := "gaston-benchmark-v05",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.5.0"
 ).dependsOn(util)
