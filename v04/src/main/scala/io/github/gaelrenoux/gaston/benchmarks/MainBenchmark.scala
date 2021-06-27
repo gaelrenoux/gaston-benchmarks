@@ -32,6 +32,9 @@ class MainBenchmark {
   @Benchmark
   def run(): Unit = {
     MainHarness.run(1000)
+    // [info] Benchmark              Mode  Cnt  Score   Error  Units
+    // [info] MainBenchmark.run      avgt   10  7.483 ± 0.637  ms/op
+    // [info] MainBenchmark.run      avgt   10  7.131 ± 0.594  ms/op
   }
 
   @Benchmark
@@ -39,6 +42,9 @@ class MainBenchmark {
     import MainHarness._
     implicit val improver: Improver = new TabuSearchSlotImprover()
     MainHarness.run(1000)
+    // [info] Benchmark              Mode  Cnt  Score   Error  Units
+    // [info] MainBenchmark.runTabu  avgt   10  6.957 ± 0.234  ms/op
+    // [info] MainBenchmark.runTabu  avgt   10  7.024 ± 0.504  ms/op
   }
 
 
