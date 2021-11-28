@@ -35,6 +35,7 @@ class MainBenchmark {
     // [info] Benchmark              Mode  Cnt  Score   Error  Units
     // [info] MainBenchmark.run      avgt   10  7.483 ± 0.637  ms/op
     // [info] MainBenchmark.run      avgt   10  7.131 ± 0.594  ms/op
+    // [info] MainBenchmark.run      avgt   10  6.519 ± 0.646  ms/op
   }
 
   @Benchmark
@@ -45,6 +46,7 @@ class MainBenchmark {
     // [info] Benchmark              Mode  Cnt  Score   Error  Units
     // [info] MainBenchmark.runTabu  avgt   10  6.957 ± 0.234  ms/op
     // [info] MainBenchmark.runTabu  avgt   10  7.024 ± 0.504  ms/op
+    // [info] MainBenchmark.runTabu  avgt   10  6.550 ± 0.470  ms/op
   }
 
 
