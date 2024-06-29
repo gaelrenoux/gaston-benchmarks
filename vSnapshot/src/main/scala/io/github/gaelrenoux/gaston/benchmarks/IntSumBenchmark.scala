@@ -1,5 +1,6 @@
 package io.github.gaelrenoux.gaston.benchmarks
 
+import io.github.gaelrenoux.gaston.benchmarks.utils._
 import org.openjdk.jmh.annotations._
 
 import java.util.concurrent.TimeUnit
@@ -82,11 +83,4 @@ object IntSumBenchmark {
   val personsSet: Set[Person] = personsArray.toSet
   var intResult: Int = 0
 
-  def repeat(n: Int)(f: => Unit) = {
-    var i = n
-    while (i > 0) {
-      f
-      i -= 1
-    }
-  }
 }

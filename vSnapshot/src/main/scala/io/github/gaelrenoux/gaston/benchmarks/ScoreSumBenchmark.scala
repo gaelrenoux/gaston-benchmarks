@@ -1,6 +1,7 @@
 package io.github.gaelrenoux.gaston.benchmarks
 
 import fr.renoux.gaston.model.Score
+import io.github.gaelrenoux.gaston.benchmarks.utils._
 import org.openjdk.jmh.annotations._
 
 import java.util.concurrent.TimeUnit
@@ -65,11 +66,4 @@ object ScoreSumBenchmark {
   val persons = Array.fill(100)(Person("John", Score(rand.nextInt(800).toDouble)))
   var scoreResult = Score.Zero
 
-  def repeat(n: Int)(f: => Unit) = {
-    var i = n
-    while (i > 0) {
-      f
-      i -= 1
-    }
-  }
 }
