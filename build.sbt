@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "2.13.6"
 name := "gaston-benchmarks"
 
 lazy val `gaston-benchmarks` = (project in file("."))
-  .aggregate(v03, v04, v05)
+  .aggregate(v0_5, v0_6, v0_7, v0_8, vSnapshot)
 
 ThisBuild / scalacOptions ++= Seq(
 
@@ -81,17 +81,27 @@ lazy val util = (project in file("util")).settings(
   name := "gaston-benchmark-utils"
 )
 
-lazy val v03 = (project in file("v03")).settings(
-  name := "gaston-benchmark-v03",
-  libraryDependencies += "gael.renoux" %% "gaston" % "0.3.0"
-).dependsOn(util)
-
-lazy val v04 = (project in file("v04")).settings(
-  name := "gaston-benchmark-v04",
-  libraryDependencies += "gael.renoux" %% "gaston" % "0.4.0"
-).dependsOn(util)
-
-lazy val v05 = (project in file("v05")).settings(
-  name := "gaston-benchmark-v05",
+lazy val v0_5 = (project in file("v0.5")).settings(
+  name := "gaston-benchmark-0.5",
   libraryDependencies += "gael.renoux" %% "gaston" % "0.5.0"
+).dependsOn(util)
+
+lazy val v0_6 = (project in file("v0.6")).settings(
+  name := "gaston-benchmark-0.6",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.6.0"
+).dependsOn(util)
+
+lazy val v0_7 = (project in file("v0.7")).settings(
+  name := "gaston-benchmark-0.7",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.7.0"
+).dependsOn(util)
+
+lazy val v0_8 = (project in file("v0.8")).settings(
+  name := "gaston-benchmark-0.8",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.8.1"
+).dependsOn(util)
+
+lazy val vSnapshot = (project in file("vSnapshot")).settings(
+  name := "gaston-benchmark-snapshot",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.9.0"
 ).dependsOn(util)
