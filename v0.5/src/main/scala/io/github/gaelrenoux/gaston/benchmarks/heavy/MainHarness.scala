@@ -1,4 +1,4 @@
-package io.github.gaelrenoux.gaston.benchmarks
+package io.github.gaelrenoux.gaston.benchmarks.heavy
 
 import fr.renoux.gaston.command.Runner
 import fr.renoux.gaston.engine._

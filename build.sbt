@@ -78,7 +78,8 @@ enablePlugins(JmhPlugin)
 
 
 lazy val util = (project in file("util")).settings(
-  name := "gaston-benchmark-utils"
+  name := "gaston-benchmark-utils",
+  libraryDependencies += "com.google.guava" % "guava" % "33.2.1-jre"
 )
 
 lazy val v0_5 = (project in file("v0.5")).settings(

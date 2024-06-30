@@ -1,5 +1,4 @@
-package io.github.gaelrenoux.gaston.benchmarks
-
+package io.github.gaelrenoux.gaston.benchmarks.heavy
 
 import fr.renoux.gaston.engine.{Improver, TabuSearchSlotImprover}
 import org.openjdk.jmh.annotations._
