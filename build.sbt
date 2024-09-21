@@ -102,7 +102,12 @@ lazy val v0_8 = (project in file("v0.8")).settings(
   libraryDependencies += "gael.renoux" %% "gaston" % "0.8.1"
 ).dependsOn(util)
 
+lazy val v0_9 = (project in file("v0.9")).settings(
+  name := "gaston-benchmark-0.9",
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.9.0"
+).dependsOn(util)
+
 lazy val vSnapshot = (project in file("vSnapshot")).settings(
   name := "gaston-benchmark-snapshot",
-  libraryDependencies += "gael.renoux" %% "gaston" % "0.9.0"
+  libraryDependencies += "gael.renoux" %% "gaston" % "0.10.0"
 ).dependsOn(util)
