@@ -9,8 +9,10 @@ import scala.util.Try
 // scalastyle:off magic.number
 abstract class ScoreCompetition[Problem] extends App {
 
+  val availableHours: Int = Try(args.head.toInt).getOrElse(throw new IllegalArgumentException("First argument must be a number of hours"))
+
   /* Input is the number of hours available. We have two benchmarks to run (Udocon and R3) so half the time for each. Less than 2h isn't possible. */
-  val availableMinutesPerBenchmark = 30 * math.max(Try(args.head.toInt).getOrElse(2), 2)
+  val availableMinutesPerBenchmark = 30 * math.max(availableHours, 2)
 
   /* Trying to balance the number of runs and the duration of them */
   val (engineRunsPerBenchmark, engineRunsDuration) = {
@@ -24,14 +26,14 @@ abstract class ScoreCompetition[Problem] extends App {
   protected def runOnce(problem: Problem, duration: FiniteDuration, parallelism: Int): (Double, Long, Long)
 
   protected def runBenchmark(problem: Problem, name: String): Unit = {
-    println(s"Problem: $name")
+    println(s"Running $name (duration: $engineRunsDuration)")
     val scores = new Array[Double](engineRunsPerBenchmark)
     val counts = new Array[Long](engineRunsPerBenchmark)
     val durationsMs = new Array[Long](engineRunsPerBenchmark)
     var i = 0 // scalastyle:ignore var.local
     while (i < engineRunsPerBenchmark) {
       val (score, count, durationMs) = runOnce(problem, engineRunsDuration, 6)
-      println(s"Run $i: score $score after $count iterations ($durationMs milliseconds)")
+      println(s"$name / Run $i: score $score after $count iterations ($durationMs milliseconds)")
       scores(i) = score
       counts(i) = count
       durationsMs(i) = durationMs
@@ -43,7 +45,10 @@ abstract class ScoreCompetition[Problem] extends App {
     val durationStats = Stats.of(durationsMs: _*)
 
     println(
-      s"""Problem: $name
+      s"""
+         |===== Run results =====
+         |Problem: $name
+         |Run planned duration: $engineRunsDuration
          |  Score mean: ${scoreStats.mean()}
          |    variance: ${scoreStats.sampleStandardDeviation()}
          |    min: ${scoreStats.min()}
