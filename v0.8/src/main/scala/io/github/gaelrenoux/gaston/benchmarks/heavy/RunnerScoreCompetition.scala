@@ -42,4 +42,4 @@ object RunnerScoreCompetition extends harness.ScoreCompetition[Problem] {
 }
 
 // scalastyle:on magic.number
-$
+
