@@ -1,0 +1,117 @@
+[info] running io.github.gaelrenoux.gaston.benchmarks.heavy.RunnerScoreCompetition 12
+Each problem will get 20 runs, 18 minutes each
+Running Udocon 2019 (duration: 18 minutes)
+Running with seed -7080226039749847583. Timeout is 2024-09-26T20:50:29.706218199Z.
+Udocon 2019 / Run 0: score 933.9412621924215 after 51706 iterations (1080242 milliseconds)
+Running with seed 2484492214826151896. Timeout is 2024-09-26T21:08:29.952026524Z.
+Udocon 2019 / Run 1: score 933.9632782738271 after 51670 iterations (1080285 milliseconds)
+Running with seed 8393668708625458103. Timeout is 2024-09-26T21:26:30.238087670Z.
+Udocon 2019 / Run 2: score 925.0070963527613 after 50319 iterations (1080302 milliseconds)
+Running with seed -2592646074806234214. Timeout is 2024-09-26T21:44:30.540830492Z.
+Udocon 2019 / Run 3: score 925.0423740142274 after 50916 iterations (1080223 milliseconds)
+Running with seed -7386423017777185756. Timeout is 2024-09-26T22:02:30.765092528Z.
+Udocon 2019 / Run 4: score 930.99083841894 after 48324 iterations (1080334 milliseconds)
+Running with seed 5812516200399131245. Timeout is 2024-09-26T22:20:31.099846313Z.
+Udocon 2019 / Run 5: score 925.0122431430802 after 49791 iterations (1080302 milliseconds)
+Running with seed 5709414070175363962. Timeout is 2024-09-26T22:38:31.403508896Z.
+Udocon 2019 / Run 6: score 930.4731693705021 after 48213 iterations (1080267 milliseconds)
+Running with seed 7977713628779033142. Timeout is 2024-09-26T22:56:31.671331396Z.
+Udocon 2019 / Run 7: score 928.7526131930558 after 50278 iterations (1080277 milliseconds)
+Running with seed -5291698938024075518. Timeout is 2024-09-26T23:14:31.949105444Z.
+Udocon 2019 / Run 8: score 925.0224812117749 after 50011 iterations (1080270 milliseconds)
+Running with seed -4611717509740676007. Timeout is 2024-09-26T23:32:32.220230693Z.
+Udocon 2019 / Run 9: score 925.0804191263686 after 51510 iterations (1080256 milliseconds)
+Running with seed 4334639658820781596. Timeout is 2024-09-26T23:50:32.477007731Z.
+Udocon 2019 / Run 10: score 921.942518597215 after 51627 iterations (1080242 milliseconds)
+Running with seed -896771516467737217. Timeout is 2024-09-27T00:08:32.720285020Z.
+Udocon 2019 / Run 11: score 925.0457946574197 after 48606 iterations (1080196 milliseconds)
+Running with seed 6002117050523943339. Timeout is 2024-09-27T00:26:32.917063289Z.
+Udocon 2019 / Run 12: score 928.0097545892177 after 50581 iterations (1080287 milliseconds)
+Running with seed 6149265904369229208. Timeout is 2024-09-27T00:44:33.205589794Z.
+Udocon 2019 / Run 13: score 931.0096421533243 after 50093 iterations (1080221 milliseconds)
+Running with seed 1229725269980245423. Timeout is 2024-09-27T01:02:33.427199903Z.
+Udocon 2019 / Run 14: score 933.9323774196046 after 51196 iterations (1080259 milliseconds)
+Running with seed -8986289911273159645. Timeout is 2024-09-27T01:20:33.687062132Z.
+Udocon 2019 / Run 15: score 933.9302788519337 after 51231 iterations (1080245 milliseconds)
+Running with seed 1337679170886521138. Timeout is 2024-09-27T01:38:33.933345208Z.
+Udocon 2019 / Run 16: score 930.4734033362615 after 50442 iterations (1080273 milliseconds)
+Running with seed 322727790649638060. Timeout is 2024-09-27T01:56:34.207648268Z.
+Udocon 2019 / Run 17: score 925.0127710942628 after 49168 iterations (1080321 milliseconds)
+Running with seed -8459075104541024152. Timeout is 2024-09-27T02:14:34.529391115Z.
+Udocon 2019 / Run 18: score 925.0075418930476 after 49747 iterations (1080347 milliseconds)
+Running with seed 287038187642072982. Timeout is 2024-09-27T02:32:34.877596696Z.
+Udocon 2019 / Run 19: score 927.5423530604479 after 47855 iterations (1080283 milliseconds)
+
+===== Run results =====
+Problem: Udocon 2019
+Run planned duration: 18 minutes
+  Score mean: 928.2596105474848
+    variance: 3.826541600541826
+    min: 921.942518597215
+    max: 933.9632782738271
+  Count mean: 50164.20000000001
+    variance: 1212.640121040821
+    min: 47855.0
+    max: 51706.0
+  Durations: 1080271.6000000003
+    min: 1080196.0
+    max: 1080347.0
+
+Running R3 2024 (duration: 18 minutes)
+Running with seed 5662190226977340689. Timeout is 2024-09-27T02:50:35.169443648Z.
+R3 2024 / Run 0: score 828.216850782045 after 22450 iterations (1187746 milliseconds)
+Running with seed -677310582311812326. Timeout is 2024-09-27T03:10:22.916592301Z.
+R3 2024 / Run 1: score 849.6575142924331 after 18559 iterations (1109244 milliseconds)
+Running with seed -2156614627749947102. Timeout is 2024-09-27T03:28:52.162069222Z.
+R3 2024 / Run 2: score 825.0230322893143 after 18635 iterations (1105875 milliseconds)
+Running with seed -3046334400189073265. Timeout is 2024-09-27T03:47:18.037784475Z.
+R3 2024 / Run 3: score 861.2403322562441 after 20209 iterations (1294848 milliseconds)
+Running with seed 7842783520936812451. Timeout is 2024-09-27T04:08:52.887176374Z.
+R3 2024 / Run 4: score 867.410226258424 after 18718 iterations (1106063 milliseconds)
+Running with seed 7213365754901551595. Timeout is 2024-09-27T04:27:18.951599192Z.
+R3 2024 / Run 5: score 823.0017313108814 after 15186 iterations (1210373 milliseconds)
+Running with seed 124776411987314650. Timeout is 2024-09-27T04:47:29.325534474Z.
+R3 2024 / Run 6: score 851.39888371931 after 20410 iterations (1167649 milliseconds)
+Running with seed 9214570187923897225. Timeout is 2024-09-27T05:06:56.975420253Z.
+R3 2024 / Run 7: score 844.5882494759971 after 22101 iterations (1101223 milliseconds)
+Running with seed -1818621440529074519. Timeout is 2024-09-27T05:25:18.199953902Z.
+R3 2024 / Run 8: score 834.1221017224527 after 13155 iterations (1132127 milliseconds)
+Running with seed 5293813944672146988. Timeout is 2024-09-27T05:44:10.328316886Z.
+R3 2024 / Run 9: score 832.5462497959716 after 17396 iterations (1252491 milliseconds)
+Running with seed -7361915854825647564. Timeout is 2024-09-27T06:05:02.820347584Z.
+R3 2024 / Run 10: score 848.8066612060973 after 17641 iterations (1148985 milliseconds)
+Running with seed 2746815099181563203. Timeout is 2024-09-27T06:24:11.806506472Z.
+R3 2024 / Run 11: score 819.9296342551529 after 20288 iterations (1144112 milliseconds)
+Running with seed 126314376783653830. Timeout is 2024-09-27T06:43:15.919173382Z.
+R3 2024 / Run 12: score 834.489404248399 after 17631 iterations (1157311 milliseconds)
+Running with seed -5193271994975767186. Timeout is 2024-09-27T07:02:33.231409833Z.
+R3 2024 / Run 13: score 826.1456264509757 after 20092 iterations (1116521 milliseconds)
+Running with seed -5500993982965079051. Timeout is 2024-09-27T07:21:09.752993056Z.
+R3 2024 / Run 14: score 830.9845226050207 after 17298 iterations (1151153 milliseconds)
+Running with seed 8770025969700810560. Timeout is 2024-09-27T07:40:20.906723540Z.
+R3 2024 / Run 15: score 871.2102613328061 after 19392 iterations (1171106 milliseconds)
+Running with seed 58744837441580291. Timeout is 2024-09-27T07:59:52.013287944Z.
+R3 2024 / Run 16: score 834.3259852148574 after 18107 iterations (1303959 milliseconds)
+Running with seed 300778948059834950. Timeout is 2024-09-27T08:21:35.973510940Z.
+R3 2024 / Run 17: score 825.2454495057068 after 15919 iterations (1097938 milliseconds)
+Running with seed -2065103319367102585. Timeout is 2024-09-27T08:39:53.912326953Z.
+R3 2024 / Run 18: score 843.537813648863 after 19728 iterations (1194964 milliseconds)
+Running with seed 3512567812083254344. Timeout is 2024-09-27T08:59:48.877732576Z.
+R3 2024 / Run 19: score 875.6789679738574 after 20768 iterations (1176584 milliseconds)
+
+===== Run results =====
+Problem: R3 2024
+Run planned duration: 18 minutes
+  Score mean: 841.3779749172404
+    variance: 16.92770074391301
+    min: 819.9296342551529
+    max: 875.6789679738574
+  Count mean: 18684.15
+    variance: 2273.7941923022336
+    min: 13155.0
+    max: 22450.0
+  Durations: 1166513.6
+    min: 1097938.0
+    max: 1303959.0
+
+[success] Total time: 44938 s (12:28:58), completed Sep 27, 2024, 11:01:25 AM
