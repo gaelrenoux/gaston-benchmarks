@@ -20,7 +20,7 @@ object RunnerScoreCompetition extends harness.ScoreCompetition[Problem] {
   private val r32024: Problem = problemFromClassPath("problems/r3-2024.conf").toOption.get
   private implicit val context: Context = Context.Default
   private implicit val random: Random = new Random
-
+  
   @main
   def main(args: String*): Unit = run(args *)
 

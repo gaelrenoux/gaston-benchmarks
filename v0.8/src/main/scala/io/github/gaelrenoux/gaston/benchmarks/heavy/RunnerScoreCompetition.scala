@@ -21,6 +21,9 @@ object RunnerScoreCompetition extends harness.ScoreCompetition[Problem] {
   private implicit val context: Context = Context.Default
   private implicit val random: Random = new Random
 
+  @main
+  def main(args: String*): Unit = run(args *)
+
   override def runOnce(problem: Problem, duration: FiniteDuration, parallelism: Int): (Double, Long, Long) = {
     implicit val p: Problem = problem
     implicit val engine: Engine = new GreedyEngine
@@ -37,8 +40,10 @@ object RunnerScoreCompetition extends harness.ScoreCompetition[Problem] {
     (schedule.score.value, count, actualDurationMs)
   }
 
-  runBenchmark(udocon2019, "Udocon 2019")
-  runBenchmark(r32024, "R3 2024")
+  override val benchmarksToRun: List[(String, Problem)] = List(
+    "Udocon 2019" -> udocon2019,
+    "R3 2024" -> r32024
+  )
 }
 
 // scalastyle:on magic.number
