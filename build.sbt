@@ -5,7 +5,7 @@ ThisBuild / scalaVersion := "3.5.1"
 name := "gaston-benchmarks"
 
 lazy val `gaston-benchmarks` = (project in file("."))
-  .aggregate(v0_5, v0_6, v0_7, v0_8, v0_9, v0_10, v1_0, vSnapshot)
+  .aggregate(v0_5, v0_6, v0_7, v0_8, v0_9, v0_10, v1_0, v1_1)
 
 ThisBuild / scalacOptions ++= Seq(
   "-language:implicitConversions",
@@ -75,17 +75,14 @@ lazy val v0_10 = (project in file("v0.10")).settings(
 
 lazy val v1_0 = (project in file("v1.0")).settings(
   name := "gaston-benchmark-1.0",
-  libraryDependencies += "gael.renoux" %% "gaston" % "1.0.0"
+  libraryDependencies += "gael.renoux" %% "gaston" % "1.0.0",
+  /* Adds Sonatype snapshots, required for Iron's snapshot version TODO Drop once we're on a definitive version */
+  resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 ).dependsOn(util)
 
-lazy val vSnapshot = (project in file("vSnapshot")).settings(
-  name := "gaston-benchmark-snapshot",
-  libraryDependencies += "gael.renoux" %% "gaston" % "1.1.0"
+lazy val v1_1 = (project in file("v1.1")).settings(
+  name := "gaston-benchmark-1.1",
+  libraryDependencies += "gael.renoux" %% "gaston" % "1.1.0",
+  /* Adds Sonatype snapshots, required for Iron's snapshot version TODO Drop once we're on a definitive version */
+  resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 ).dependsOn(util)
-
-
-/* Adds Sonatype snapshots, required for Iron's snapshot version TODO Drop once we're on a definitive version */
-v1_0 / resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-
-/* Adds Sonatype snapshots, required for Iron's snapshot version TODO Drop once we're on a definitive version */
-vSnapshot / resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
