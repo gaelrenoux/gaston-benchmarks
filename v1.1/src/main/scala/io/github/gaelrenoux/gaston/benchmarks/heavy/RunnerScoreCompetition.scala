@@ -1,11 +1,11 @@
 package io.github.gaelrenoux.gaston.benchmarks.heavy
 
 import fr.renoux.gaston.command.{Output, ParallelRunner}
-import fr.renoux.gaston.engine._
-import fr.renoux.gaston.input._
-import fr.renoux.gaston.model.Problem
-import fr.renoux.gaston.util.CanAddDuration._
-import fr.renoux.gaston.util.Context
+import fr.renoux.gaston.engine.*
+import fr.renoux.gaston.input.*
+import fr.renoux.gaston.model.*
+import fr.renoux.gaston.util.*
+import fr.renoux.gaston.util.CanAddDuration.given
 import io.github.gaelrenoux.gaston.benchmarks.harness
 
 import java.time.Instant
