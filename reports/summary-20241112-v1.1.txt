@@ -1,0 +1,31 @@
+===== Run results =====
+Problem: Udocon 2019
+Run planned duration: 9 minutes
+  Score mean: 925.179903702533
+    variance: 5.572251742369251
+    min: 914.020734723695
+    max: 934.0013113504725
+  Count mean: 24925.05
+    variance: 656.1302402002685
+    min: 24067.0
+    max: 26122.0
+  Durations: 540264.4500000001
+    min: 540219.0
+    max: 540324.0
+
+===== Run results =====
+Problem: R3 2024
+Run planned duration: 9 minutes
+  Score mean: 836.8266647984768
+    variance: 16.257969350868287
+    min: 803.7821442467935
+    max: 867.3982033201164
+  Count mean: 10741.349999999999
+    variance: 1720.1506444127742
+    min: 8365.0
+    max: 14456.0
+  Durations: 593459.45
+    min: 541511.0
+    max: 679357.0
+
+[success] Total time: 22676 s (06:17:56), completed Nov 12, 2024, 5:46:01 PM

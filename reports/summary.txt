@@ -1,0 +1,113 @@
+10.0
+
+===== Run results =====
+Problem: Udocon 2019
+Run planned duration: 7 minutes
+  Score mean: 925.4407868774938
+    variance: 4.713121530392401
+    min: 918.9455562043944
+    max: 933.9405977165598
+  Count mean: 21485.75
+    variance: 467.6050824765431
+    min: 20434.0
+    max: 22135.0
+  Durations: 420237.35
+    min: 420189.0
+    max: 420307.0
+
+===== Run results =====
+Problem: R3 2024
+Run planned duration: 7 minutes
+  Score mean: 831.2395286178852
+    variance: 20.022817166579877
+    min: 804.3938194292924
+    max: 885.6031497494218
+  Count mean: 9976.35
+    variance: 1221.1945521539662
+    min: 7057.0
+    max: 11503.0
+  Durations: 472520.39999999997
+    min: 420581.0
+    max: 538788.0
+
+
+
+1.0
+
+===== Run results =====
+Problem: Udocon 2019
+Run planned duration: 7 minutes
+  Score mean: 923.2308011504028
+    variance: 5.551948020509462
+    min: 916.720560178899
+    max: 933.9681468416001
+  Count mean: 19409.9
+    variance: 370.41298431260293
+    min: 18714.0
+    max: 19979.0
+  Durations: 420271.6499999999
+    min: 420220.0
+    max: 420338.0
+
+===== Run results =====
+Problem: R3 2024
+Run planned duration: 7 minutes
+  Score mean: 831.5091949250134
+    variance: 19.262055010307364
+    min: 792.1917913633663
+    max: 861.4338458605146
+  Count mean: 10282.05
+    variance: 1379.694988222511
+    min: 7539.0
+    max: 13178.0
+  Durations: 487864.9499999999
+    min: 437893.0
+    max: 562056.0
+
+
+
+1.1-snapshot
+
+===== Run results =====
+Problem: Udocon 2019
+Run planned duration: 7 minutes
+  Score mean: 921.6539865882014
+    variance: 6.41122936743457
+    min: 906.9556043771184
+    max: 933.9305126340514
+  Count mean: 20261.799999999996
+    variance: 379.2974946841645
+    min: 19655.0
+    max: 21026.0
+  Durations: 420255.4
+    min: 420186.0
+    max: 420314.0
+
+===== Run results =====
+Problem: R3 2024
+Run planned duration: 7 minutes
+  Score mean: 832.1934293992583
+    variance: 18.92985885684726
+    min: 797.801240614966
+    max: 878.223112292503
+  Count mean: 9844.1
+    variance: 1339.6191092600677
+    min: 6938.0
+    max: 12189.0
+  Durations: 458313.9499999999
+    min: 422189.0
+    max: 515524.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
