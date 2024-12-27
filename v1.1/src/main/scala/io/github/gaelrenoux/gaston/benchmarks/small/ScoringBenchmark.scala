@@ -90,7 +90,11 @@ class ScoringBenchmark {
   // println(oldSchedule.toFormattedString)
   // println(newSchedule.toPrettyString)
 
-  if (scoreOldSchedule().value != scoreNewSchedule().value) throw new IllegalArgumentException(s"Not the same score: ${scoreOldSchedule().value} != ${scoreNewSchedule().value}")
+  if (scoreOldSchedule().value != scoreNewSchedule().value) {
+    throw new IllegalArgumentException(s"Not the same score: ${scoreOldSchedule().value} != ${scoreNewSchedule().value}")
+  } else {
+    println("Both schedules scored identically")
+  }
 
   @Benchmark
   def scoreOldSchedule(): old.Score = {
