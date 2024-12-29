@@ -9,7 +9,7 @@ import org.openjdk.jmh.annotations.*
 import java.util.concurrent.TimeUnit
 
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Warmup(iterations = 100)
+@Warmup(iterations = 50)
 @Measurement(iterations = 100)
 @Fork(value = 1, jvmArgs = Array(
   "-server",
@@ -40,6 +40,46 @@ class ScoringBenchmark {
   def scoreNewSchedule(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
       myState.newProblem.score(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def calculateBaseScores(myState: MyState): Unit = {
+    myState.newSchedules.foreach { s =>
+      myState.newProblem.calculateBaseScores(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def calculateWishesTopicScores(myState: MyState): Unit = {
+    myState.newSchedules.foreach { s =>
+      myState.newProblem.calculateWishesTopicScores(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def calculateWishesPersonScores(myState: MyState): Unit = {
+    myState.newSchedules.foreach { s =>
+      myState.newProblem.calculateWishesPersonScores(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def calculateExclusiveScores(myState: MyState): Unit = {
+    myState.newSchedules.foreach { s =>
+      myState.newProblem.calculateExclusiveScores(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def calculateLinkedScores(myState: MyState): Unit = {
+    myState.newSchedules.foreach { s =>
+      myState.newProblem.calculateLinkedScores(s)
     }
   }
 
