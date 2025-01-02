@@ -39,7 +39,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def scoreNewSchedule(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.score(s)
+      s.score(myState.newProblem)
     }
   }
 
@@ -47,7 +47,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def calculateBaseScores(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.calculateBaseScores(s)
+      s.calculateBaseScores(myState.newProblem)
     }
   }
 
@@ -55,7 +55,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def calculateWishesTopicScores(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.calculateWishesTopicScores(s)
+      s.calculateWishesTopicScores(myState.newProblem)
     }
   }
 
@@ -63,7 +63,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def calculateWishesPersonScores(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.calculateWishesPersonScores(s)
+      s.calculateWishesPersonScores(myState.newProblem)
     }
   }
 
@@ -71,7 +71,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def calculateExclusiveScores(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.calculateExclusiveScores(s)
+      s.calculateExclusiveScores(myState.newProblem)
     }
   }
 
@@ -79,7 +79,7 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def calculateLinkedScores(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      myState.newProblem.calculateLinkedScores(s)
+      s.calculateLinkedScores(myState.newProblem)
     }
   }
 
