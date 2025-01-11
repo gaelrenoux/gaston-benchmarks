@@ -1,8 +1,10 @@
 package io.github.gaelrenoux.gaston.benchmarks.small.assignment
 
-import fr.renoux.gaston.input.problemFromClassPath
-import fr.renoux.gaston.util.Context
+import fr.renoux.gaston.engine2.AssignmentImprover
+import fr.renoux.gaston.input.{InputLoader, InputModel, InputTranscription2, problemFromClassPath}
 import fr.renoux.gaston.{engine as oldEngine, model as oldModel}
+import fr.renoux.gaston.model2.*
+import fr.renoux.gaston.util.Context
 import org.openjdk.jmh.annotations.*
 
 import java.util.concurrent.TimeUnit
@@ -29,10 +31,44 @@ class AssignmentBenchmark {
 
   @Benchmark
   @BenchmarkMode(Array(Mode.SingleShotTime))
-  def improveSchedule(myState: MyState): Unit = {
+  @Warmup(iterations = 0)
+  @Measurement(iterations = 1)
+  def compareBoth(myState: MyState): Unit = {
     given Random = new Random(0)
-    myState.schedules.foreach { s =>
-      myState.improver.improve(s)
+    val newSchedule = myState.newSchedules.head
+    val oldSchedule = myState.oldSchedules.head
+
+    myState.newImprover.improve(newSchedule)
+    val improvedOldS = myState.oldImprover.improve(oldSchedule)
+    val newScore = newSchedule.score(myState.newProblem)
+    val oldScore = improvedOldS.score
+
+    if (newScore != oldScore) {
+      println("Improved scores don't match!")
+      println(improvedOldS.toFormattedString)
+      given SchedulePrinter = new SchedulePrinter(myState.newProblem)
+      println(newSchedule.toPrettyString)
+      throw new IllegalStateException
+    } else {
+      println("Improved scores match")
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def improveOldSchedule(myState: MyState): Unit = {
+    given Random = new Random(0)
+    myState.oldSchedules.foreach { s =>
+      myState.oldImprover.improve(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def improveNewSchedule(myState: MyState): Unit = {
+    given Random = new Random(0)
+    myState.newSchedules.foreach { s =>
+      myState.newImprover.improve(s)
     }
   }
 }
@@ -44,21 +80,27 @@ object AssignmentBenchmark {
     val Size = 1000
     given Context = Context.Default
 
-    given problem: oldModel.Problem = problemFromClassPath("problems/udocon-2019.conf").toOption.get
+    private val udocon2019Input: InputModel = InputLoader.fromClassPath("problems/udocon-2019.conf").toOption.get
 
-    var schedules: Array[oldModel.Schedule] = null
+    given oldProblem: oldModel.Problem = problemFromClassPath("problems/udocon-2019.conf").toOption.get
 
-    val improver = new oldEngine.assignment.AssignmentImprover
+    val newProblem = InputTranscription2(udocon2019Input).result.toEither.toOption.get
+
+    var oldSchedules: Array[oldModel.Schedule] = null
+    var newSchedules: Array[Schedule] = null
+
+    val oldImprover = new oldEngine.assignment.AssignmentImprover
+    val newImprover = new AssignmentImprover(newProblem)
 
     @Setup(Level.Iteration)
     def setUp(): Unit = {
-      val Seq(d1a, d1b, d2a, d2b, d3a) = problem.slotsList
+      val Seq(d1a, d1b, d2a, d2b, d3a) = oldProblem.slotsList
       val Seq(agon, gayOrcs, beton, donjon, selpoivreTolkraft, shadowrun, endOfLine, etoiles, facettes, inflorenza, itras, ixalan, legacy, rivieres, schtroumpfs, monastere, meute, monster, edge, dekaranger, pirateZombi, ribbon, soth, starWars, sprawl, flood, bonneville, epoque, vampire, vastemonde) =
-        problem.topicsList
+        oldProblem.topicsList
       val Seq(selpoivre, agone, aude, bakemono, bashar, boojum, chestel, cryoban, emojk, eugenie, gabzeta, herlkin, highlandjul, isidore, jdc, jorune, julian, kandjar, leonard, mangon, najael, orfeo, paiji, paradoks, rolapin, saladdin, sammael, tolkraft, udo, virgile, zeben, killerklown) =
-        problem.personsList
+        oldProblem.personsList
 
-      schedules = (0 until Size).toArray.map { _ =>
+      oldSchedules = (0 until Size).toArray.map { _ =>
         oldModel.Schedule.from(
           d1a(
             agon(highlandjul, agone, najael, herlkin, udo, kandjar),
@@ -101,6 +143,9 @@ object AssignmentBenchmark {
             epoque(sammael, virgile, bakemono, herlkin, gabzeta, orfeo)
           )
         )
+      }
+      newSchedules = oldSchedules.map { s =>
+        ScheduleMaker.fromOldSchedule(s, newProblem)
       }
     }
   }
