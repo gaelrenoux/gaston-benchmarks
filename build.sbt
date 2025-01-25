@@ -87,6 +87,13 @@ lazy val v1_1 = (project in file("v1.1")).settings(
   resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 ).dependsOn(util)
 
+lazy val v1_2 = (project in file("v1.2")).settings(
+  name := "gaston-benchmark-1.2",
+  libraryDependencies += "gael.renoux" %% "gaston" % "1.2.0",
+  /* Adds Sonatype snapshots, required for Iron's snapshot version TODO Drop once we're on a definitive version */
+  resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+).dependsOn(util)
+
 lazy val v2_0 = (project in file("v2.0")).settings(
   name := "gaston-benchmark-2.0",
   libraryDependencies += "gael.renoux" %% "gaston" % "2.0.0",
