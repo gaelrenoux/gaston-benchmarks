@@ -41,7 +41,7 @@ object AssignmentBenchmark {
 
   @State(Scope.Benchmark)
   class MyState {
-    val Size = 1000
+    val Size = 100
     given Context = Context.Default
 
     given problem: oldModel.Problem = problemFromClassPath("problems/udocon-2019.conf").toOption.get
