@@ -29,8 +29,19 @@ class AssignmentBenchmark {
 
   @Benchmark
   @BenchmarkMode(Array(Mode.SingleShotTime))
-  def improveSchedule(myState: MyState): Unit = {
+  def improveSchedule(myState: MyUdoconState): Unit = {
     given Random = new Random(0)
+
+    myState.schedules.foreach { s =>
+      myState.improver.improve(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def improveScheduleBis(myState: MyUdoconBisState): Unit = {
+    given Random = new Random(0)
+
     myState.schedules.foreach { s =>
       myState.improver.improve(s)
     }
@@ -39,12 +50,12 @@ class AssignmentBenchmark {
 
 object AssignmentBenchmark {
 
-  @State(Scope.Benchmark)
-  class MyState {
+  abstract class MyState(problemPath: String) {
     val Size = 100
+
     given Context = Context.Default
 
-    given problem: oldModel.Problem = problemFromClassPath("problems/udocon-2019.conf").toOption.get
+    given problem: oldModel.Problem = problemFromClassPath(problemPath).toOption.get
 
     var schedules: Array[oldModel.Schedule] = null
 
@@ -104,4 +115,10 @@ object AssignmentBenchmark {
       }
     }
   }
+
+  @State(Scope.Benchmark)
+  class MyUdoconState extends MyState("problems/udocon-2019.conf")
+
+  @State(Scope.Benchmark)
+  class MyUdoconBisState extends MyState("problems/udocon-2019-bis.conf")
 }
