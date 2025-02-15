@@ -1,4 +1,4 @@
-package io.github.gaelrenoux.gaston.benchmarks.small.scoring
+package io.github.gaelrenoux.gaston.benchmarks.small.score
 
 import fr.renoux.gaston.input.{InputLoader, InputModel, InputTranscription2, problemFromClassPath}
 import fr.renoux.gaston.model as old
