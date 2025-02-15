@@ -33,8 +33,9 @@ class AssignmentBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   @Warmup(iterations = 0)
   @Measurement(iterations = 1)
-  def compareBoth(myState: MyState): Unit = {
+  def compareBoth(myState: Udocon219): Unit = {
     given Random = new Random(0)
+
     val newSchedule = myState.newSchedules.head
     val oldSchedule = myState.oldSchedules.head
 
@@ -46,7 +47,9 @@ class AssignmentBenchmark {
     if (newScore != oldScore) {
       println("Improved scores don't match!")
       println(improvedOldS.toFormattedString)
+
       given SchedulePrinter = new SchedulePrinter(myState.newProblem)
+
       println(newSchedule.toPrettyString)
       throw new IllegalStateException
     } else {
@@ -56,8 +59,9 @@ class AssignmentBenchmark {
 
   @Benchmark
   @BenchmarkMode(Array(Mode.SingleShotTime))
-  def improveOldSchedule(myState: MyState): Unit = {
+  def improveOldScheduleUdocon(myState: Udocon219): Unit = {
     given Random = new Random(0)
+
     myState.oldSchedules.foreach { s =>
       myState.oldImprover.improve(s)
     }
@@ -65,8 +69,29 @@ class AssignmentBenchmark {
 
   @Benchmark
   @BenchmarkMode(Array(Mode.SingleShotTime))
-  def improveNewSchedule(myState: MyState): Unit = {
+  def improveOldScheduleR3(myState: R32024): Unit = {
     given Random = new Random(0)
+
+    myState.oldSchedules.foreach { s =>
+      myState.oldImprover.improve(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def improveNewScheduleUdocon(myState: Udocon219): Unit = {
+    given Random = new Random(0)
+
+    myState.newSchedules.foreach { s =>
+      myState.newImprover.improve(s)
+    }
+  }
+
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  def improveNewScheduleR3(myState: R32024): Unit = {
+    given Random = new Random(0)
+
     myState.newSchedules.foreach { s =>
       myState.newImprover.improve(s)
     }
@@ -76,15 +101,16 @@ class AssignmentBenchmark {
 object AssignmentBenchmark {
 
   @State(Scope.Benchmark)
-  class MyState {
+  class Udocon219 {
     val Size = 100
+
     given Context = Context.Default
 
-    private val udocon2019Input: InputModel = InputLoader.fromClassPath("problems/udocon-2019.conf").toOption.get
+    private val input: InputModel = InputLoader.fromClassPath("problems/udocon-2019.conf").toOption.get
 
     given oldProblem: oldModel.Problem = problemFromClassPath("problems/udocon-2019.conf").toOption.get
 
-    val newProblem = InputTranscription2(udocon2019Input).result.toEither.toOption.get
+    val newProblem = InputTranscription2(input).result.toEither.toOption.get
 
     var oldSchedules: Array[oldModel.Schedule] = null
     var newSchedules: Array[Schedule] = null
@@ -141,6 +167,88 @@ object AssignmentBenchmark {
             ixalan(killerklown, jorune, rolapin, zeben, saladdin, kandjar),
             bonneville(chestel, agone, jdc, paiji, emojk),
             epoque(sammael, virgile, bakemono, herlkin, gabzeta, orfeo)
+          )
+        )
+      }
+      newSchedules = oldSchedules.map { s =>
+        ScheduleMaker.fromOldSchedule(s, newProblem)
+      }
+    }
+  }
+
+  @State(Scope.Benchmark)
+  class R32024 {
+    val Size = 100
+
+    given Context = Context.Default
+
+    private val input: InputModel = InputLoader.fromClassPath("problems/r3-2024.conf").toOption.get
+
+    given oldProblem: oldModel.Problem = problemFromClassPath("problems/r3-2024.conf").toOption.get
+
+    val newProblem = InputTranscription2(input).result.toEither.toOption.get
+
+    var oldSchedules: Array[oldModel.Schedule] = null
+    var newSchedules: Array[Schedule] = null
+
+    val oldImprover = new oldEngine.assignment.AssignmentImprover
+    val newImprover = new AssignmentImprover(newProblem)
+
+    @Setup(Level.Iteration)
+    def setUp(): Unit = {
+      val Seq(d1a, d1b, d2a, d2b, d3a, d3b) = oldProblem.slotsList
+      val Seq(
+      apocalypse, avatar, orcs, bliss1, bliss2, bluebeard, vampile, cyberpunk, bile, chatons, dune, exploirateurs, cthulhu, genese1, genese2, couvee, librete, ventre, london, microscope, minuit, pasion, serpent, shades, soth, synthetiques, wildsea,
+      unassignedD1a, unassignedD1b, unassignedD2a, unassignedD2b, unassignedD3a, unassignedD3b
+      ) = oldProblem.topicsList
+      val Seq(adrien, bpm, cactus, chloe, elmi, fanny, gawel, laetitia, lea, maxime, natacha, noemie, olivier, pacman, rafik, tanguy, tilleul, tiramisu, ulysse, vincent, viviane, vivien) =
+        oldProblem.personsList
+
+      // TODO Prepare better starting schedule for optimization
+      oldSchedules = (0 until Size).toArray.map { _ =>
+        oldModel.Schedule.from(
+          d1a(
+            unassignedD1a(pacman, noemie, elmi),
+            bliss1(adrien, natacha, cactus, olivier),
+            exploirateurs(vivien, maxime, lea, tanguy),
+            genese1(ulysse, rafik, tiramisu, chloe, vincent),
+            microscope(gawel, fanny, bpm, tilleul)
+          ),
+          d1b(
+            unassignedD1b(fanny, gawel, tanguy),
+            bliss2(adrien, natacha, cactus, olivier),
+            chatons(tilleul, vivien, maxime, noemie, lea),
+            genese2(ulysse, rafik, tiramisu, bpm,  vincent),
+            synthetiques(pacman, chloe, laetitia, elmi)
+          ),
+          d2a(
+            unassignedD2a(chloe, adrien),
+            avatar(natacha, tiramisu, laetitia, noemie),
+            dune(pacman, gawel, elmi, tanguy),
+            pasion(vivien, viviane, bpm, lea),
+            shades(olivier, fanny, maxime),
+            wildsea(tilleul, rafik, cactus, ulysse, vincent)
+          ),
+          d2b(
+            unassignedD2b(bpm, viviane, rafik, pacman, tiramisu, chloe),
+            bluebeard(tilleul, fanny, gawel, ulysse, noemie),
+            bile(cactus, natacha, vincent, tanguy),
+            london(olivier, vivien),
+            minuit(adrien, maxime, laetitia, lea, elmi)
+          ),
+          d3a(
+            unassignedD3a(vincent, ulysse, natacha),
+            orcs(olivier, elmi, pacman, tilleul),
+            cthulhu(gawel, adrien, rafik, tanguy),
+            librete(vivien, viviane, cactus, laetitia),
+            serpent(maxime, fanny, bpm, tiramisu, chloe, noemie, lea)
+          ),
+          d3b(
+            unassignedD3b(vivien, tiramisu, tilleul, ulysse),
+            apocalypse(cactus, fanny, rafik, viviane, laetitia),
+            cyberpunk(elmi, pacman, noemie, adrien),
+            ventre(natacha, bpm, maxime, olivier, chloe),
+            soth(gawel, lea, vincent, tanguy)
           )
         )
       }
