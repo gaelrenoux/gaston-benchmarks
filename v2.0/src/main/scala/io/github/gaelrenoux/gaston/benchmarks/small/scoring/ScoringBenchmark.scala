@@ -39,49 +39,51 @@ class ScoringBenchmark {
   @BenchmarkMode(Array(Mode.SingleShotTime))
   def scoreNewSchedule(myState: MyState): Unit = {
     myState.newSchedules.foreach { s =>
-      s.score(myState.newProblem)
+      s.getTotalScore()
     }
   }
 
-  @Benchmark
-  @BenchmarkMode(Array(Mode.SingleShotTime))
-  def calculateBaseScores(myState: MyState): Unit = {
-    myState.newSchedules.foreach { s =>
-      s.calculateBaseScores(myState.newProblem)
-    }
-  }
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.SingleShotTime))
-  def calculateWishesTopicScores(myState: MyState): Unit = {
-    myState.newSchedules.foreach { s =>
-      s.calculateWishesTopicScores(myState.newProblem)
-    }
-  }
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.SingleShotTime))
-  def calculateWishesPersonScores(myState: MyState): Unit = {
-    myState.newSchedules.foreach { s =>
-      s.calculateWishesPersonScores(myState.newProblem)
-    }
-  }
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.SingleShotTime))
-  def calculateExclusiveScores(myState: MyState): Unit = {
-    myState.newSchedules.foreach { s =>
-      s.calculateExclusiveScores(myState.newProblem)
-    }
-  }
-
-  @Benchmark
-  @BenchmarkMode(Array(Mode.SingleShotTime))
-  def calculateLinkedScores(myState: MyState): Unit = {
-    myState.newSchedules.foreach { s =>
-      s.calculateLinkedScores(myState.newProblem)
-    }
-  }
+// TODO Sub-scoring is not really possible anymore. Maybe later.
+//
+//  @Benchmark
+//  @BenchmarkMode(Array(Mode.SingleShotTime))
+//  def calculateBaseScores(myState: MyState): Unit = {
+//    myState.newSchedules.foreach { s =>
+//      s.calculateBaseScores(myState.newProblem)
+//    }
+//  }
+//
+//  @Benchmark
+//  @BenchmarkMode(Array(Mode.SingleShotTime))
+//  def calculateWishesTopicScores(myState: MyState): Unit = {
+//    myState.newSchedules.foreach { s =>
+//      s.calculateWishesTopicScores(myState.newProblem)
+//    }
+//  }
+//
+//  @Benchmark
+//  @BenchmarkMode(Array(Mode.SingleShotTime))
+//  def calculateWishesPersonScores(myState: MyState): Unit = {
+//    myState.newSchedules.foreach { s =>
+//      s.calculateWishesPersonScores(myState.newProblem)
+//    }
+//  }
+//
+//  @Benchmark
+//  @BenchmarkMode(Array(Mode.SingleShotTime))
+//  def calculateExclusiveScores(myState: MyState): Unit = {
+//    myState.newSchedules.foreach { s =>
+//      s.calculateExclusiveScores(myState.newProblem)
+//    }
+//  }
+//
+//  @Benchmark
+//  @BenchmarkMode(Array(Mode.SingleShotTime))
+//  def calculateLinkedScores(myState: MyState): Unit = {
+//    myState.newSchedules.foreach { s =>
+//      s.calculateLinkedScores(myState.newProblem)
+//    }
+//  }
 
 }
 

@@ -83,7 +83,7 @@ object ScoringLoop {
   //  }
 
   def scoreNewSchedule(): Unit = while (true) {
-    val _ = newSchedule.score(newProblem)
+    val _ = newSchedule.getTotalScore()
   }
 
   @main

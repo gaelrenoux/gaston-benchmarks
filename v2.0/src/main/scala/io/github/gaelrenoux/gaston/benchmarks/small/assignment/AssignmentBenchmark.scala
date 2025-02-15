@@ -40,7 +40,7 @@ class AssignmentBenchmark {
 
     myState.newImprover.improve(newSchedule)
     val improvedOldS = myState.oldImprover.improve(oldSchedule)
-    val newScore = newSchedule.score(myState.newProblem)
+    val newScore = newSchedule.getTotalScore()
     val oldScore = improvedOldS.score
 
     if (newScore != oldScore) {
