@@ -45,7 +45,7 @@ class AssignmentBenchmark {
     val oldScore = improvedOldS.score
 
     if (newScore != oldScore) {
-      println(s"Improved scores don't match! $newScore vs $oldScore")
+      println(s"Improved scores don't match! Old $oldScore vs New $newScore")
       println("=============================================================================")
       println(improvedOldS.toFormattedString)
       println("=============================================================================")
@@ -60,35 +60,34 @@ class AssignmentBenchmark {
     }
   }
 
-  //    @Benchmark
-  //    @BenchmarkMode(Array(Mode.SingleShotTime))
-  //    @Warmup(iterations = 0)
-  //    @Measurement(iterations = 1)
-  //    def compareBothR3(myState: R32024): Unit = {
-  //      given Random = new Random(0)
-  //
-  //      val newSchedule = myState.newSchedules.head
-  //      val oldSchedule = myState.oldSchedules.head
-  //
-  //      myState.newImprover.improve(newSchedule)
-  //      val improvedOldS = myState.oldImprover.improve(oldSchedule)
-  //      val newScore = newSchedule.getTotalScore()
-  //      val oldScore = improvedOldS.score
-  //
-  //      // TODO: Cannot work, because some stuff isn't taken into account in the new engine (like long-duration topics)
-  //      if (newScore != oldScore) {
-  //        println(s"Improved scores don't match! $newScore vs $oldScore")
-  //        println("=============================================================================")
-  //        println(improvedOldS.toFormattedString)
-  //        println("=============================================================================")
-  //        given SchedulePrinter = new SchedulePrinter(myState.newProblem)
-  //        println(newSchedule.toPrettyString)
-  //        println("=============================================================================")
-  //        throw new IllegalStateException
-  //      } else {
-  //        println("Improved scores match")
-  //      }
-  //    }
+  @Benchmark
+  @BenchmarkMode(Array(Mode.SingleShotTime))
+  @Warmup(iterations = 0)
+  @Measurement(iterations = 1)
+  def compareBothR3(myState: R32024): Unit = {
+
+    val newSchedule = myState.newSchedules.head
+    val oldSchedule = myState.oldSchedules.head
+
+    myState.newImprover.improve(newSchedule)(using new Random(42))
+    val improvedOldS = myState.oldImprover.improve(oldSchedule)(using new Random(42))
+    val newScore = newSchedule.getTotalScore()
+    val oldScore = improvedOldS.score
+
+    // TODO: Cannot work, because some stuff isn't taken into account in the new engine (like long-duration topics)
+    if (newScore != oldScore) {
+      println(s"Improved scores don't match! Old $oldScore vs New $newScore")
+      println("=============================================================================")
+      println(improvedOldS.toFormattedString)
+      println("=============================================================================")
+      given SchedulePrinter = new SchedulePrinter(myState.newProblem)
+      println(newSchedule.toPrettyString)
+      println("=============================================================================")
+      throw new IllegalStateException
+    } else {
+      println("Improved scores match")
+    }
+  }
 
   @Benchmark
   @BenchmarkMode(Array(Mode.SingleShotTime))
@@ -240,11 +239,11 @@ object AssignmentBenchmark {
       oldSchedules = (0 until Size).toArray.map { _ =>
         oldModel.Schedule.from(
           d1a(
-            unassignedD1a(natacha, olivier, maxime, lea, tanguy, bpm, tilleul),
+            unassignedD1a(olivier, lea, tanguy, bpm, cactus),
             bliss1(adrien, fanny, chloe, tiramisu),
-            exploirateurs(vivien, vincent, chloe, rafik),
+            exploirateurs(vivien, vincent, maxime, rafik),
             vampire(ulysse, noemie, elmi),
-            microscope(gawel, pacman, natacha, cactus)
+            microscope(gawel, pacman, natacha, tilleul)
           ),
           d1b(
             unassignedD1b(olivier, maxime, noemie, lea, bpm),
@@ -269,14 +268,14 @@ object AssignmentBenchmark {
             minuit(adrien, rafik, chloe, fanny, gawel)
           ),
           d3a(
-            unassignedD3a(vincent, viviane, cactus, lea),
-            orcs(olivier, noemie, chloe, adrien),
+            unassignedD3a(viviane, cactus, tilleul),
+            orcs(olivier, vincent, chloe, adrien),
             cthulhu(gawel, bpm, tiramisu, laetitia),
             librete(vivien, ulysse, elmi, tanguy),
-            serpent(maxime, natacha, pacman, tilleul, pacman, rafik, fanny)
+            serpent(maxime, natacha, pacman, lea, rafik, fanny, noemie)
           ),
           d3b(
-            unassignedD3b(tiramisu, ulysse, rafik, viviane, adrien, maxime),
+            unassignedD3b(rafik, viviane, adrien, maxime),
             apocalypse(cactus, tanguy, vincent, chloe, olivier),
             cyberpunk(elmi, lea, bpm, noemie),
             ventre(natacha, pacman, laetitia, vivien, tilleul),
